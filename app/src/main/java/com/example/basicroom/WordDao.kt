@@ -7,7 +7,7 @@ import androidx.room.Query
 @Dao
 interface WordDao {
     @Insert
-    fun insertData(value:Word)
+    fun insertData(value:Data)
     @Query("SELECT *FROM WORDTABLE")
-    fun displayData():Word
+    fun displayData():Data
 }

@@ -4,9 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "wordTable")
-data class Word(
+@Entity(tableName = "newtable")
+data class Data(
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
-    @ColumnInfo var name:String?
-)
+    var nightId: Int=0,
+    //@ColumnInfo(name="word")
+//var name:String=""
+
+    )
