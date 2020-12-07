@@ -8,6 +8,6 @@ import androidx.room.Query
 interface WordDao {
     @Insert
     fun insertData(value:Data)
-    @Query("SELECT *FROM WORDTABLE")
+    @Query("SELECT *FROM newtable")
     fun displayData():Data
 }

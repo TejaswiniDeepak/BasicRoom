@@ -16,16 +16,19 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
 
             GlobalScope.launch {
-                callDatabase()
+                callDatabase(inputtext.text.toString())
                 display()
             }
         }
     }
-    private fun callDatabase()
+    private fun callDatabase(dname:String)
     {
         val db:AppDatabase= AppDatabase.getInstance(this)
-val data=Data()
-        db.wordDao().insertData(data)
+var data1=Data(name = dname)
+        //val data2=Data(name = "teju")
+        db.wordDao().insertData(data1)
+        //db.wordDao().insertData(data2)
+
 
        // db.wordDao().insertData(data)
 
@@ -35,6 +38,12 @@ val data=Data()
         val db:AppDatabase= AppDatabase.getInstance(this)
      val displaydata=db.wordDao().displayData()
         Log.i("id","${displaydata.nightId}")
+        Log.i("id","${displaydata.name}")
+
+        val displaydata2=db.wordDao().displayData()
+        Log.i("id","${displaydata2.nightId}")
+        Log.i("id","${displaydata2.name}")
+
        // Log.i("name","${displaydata.name}")
     }
 }
