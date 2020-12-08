@@ -14,17 +14,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         button.setOnClickListener {
-
+            //val db:AppDatabase= AppDatabase.getInstance(this)
             GlobalScope.launch {
-                callDatabase(inputtext.text.toString())
+
+               /**var rowNumber= db.wordDao().deleteAll()
+                Log.i("Deleted Row","$rowNumber")**/
+
+               callDatabase(inputtext1.text.toString().toInt(),inputtext.text.toString())
                 display()
             }
         }
     }
-    private fun callDatabase(dname:String)
+    private fun callDatabase(did:Int,dname:String)
     {
         val db:AppDatabase= AppDatabase.getInstance(this)
-var data1=Data(name = dname)
+var data1=Data(nightId = did,firstname =dname)
         //val data2=Data(name = "teju")
         db.wordDao().insertData(data1)
         //db.wordDao().insertData(data2)
@@ -37,12 +41,17 @@ var data1=Data(name = dname)
     {
         val db:AppDatabase= AppDatabase.getInstance(this)
      val displaydata=db.wordDao().displayData()
-        Log.i("id","${displaydata.nightId}")
-        Log.i("id","${displaydata.name}")
+        var i=0
+        var numberOfRecords=displaydata.count()
+        while (i<=numberOfRecords-1) {
 
-        val displaydata2=db.wordDao().displayData()
+            Log.i("id", "${displaydata[i].nightId}")
+            Log.i("id", "${displaydata[i].firstname}")
+            i++
+        }
+        /**val displaydata2=db.wordDao().displayData()
         Log.i("id","${displaydata2.nightId}")
-        Log.i("id","${displaydata2.name}")
+        Log.i("id","${displaydata2.name}")**/
 
        // Log.i("name","${displaydata.name}")
     }

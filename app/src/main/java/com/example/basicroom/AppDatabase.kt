@@ -1,11 +1,10 @@
 package com.example.basicroom
 
-import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Data::class],version = 7)
+@Database(entities = [Data::class],version = 10)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun wordDao():WordDao
 
@@ -14,7 +13,7 @@ abstract class AppDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getInstance(context: Context): AppDatabase {
+        fun getInstance(context: MainActivity): AppDatabase {
             synchronized(this) {
                 var instance = INSTANCE
 

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "newtable")
 data class Data(
     @PrimaryKey(autoGenerate = true)
-    val nightId: Int=0,
-val name:String
+    val nightId: Int,
+@ColumnInfo(name = "firstname") val firstname:String
 
     )

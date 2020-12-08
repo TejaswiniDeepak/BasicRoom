@@ -8,6 +8,10 @@ import androidx.room.Query
 interface WordDao {
     @Insert
     fun insertData(value:Data)
+
     @Query("SELECT *FROM newtable")
-    fun displayData():Data
+    fun displayData():List<Data>
+
+    @Query("DELETE FROM newtable ")
+    fun deleteAll():Int
 }
